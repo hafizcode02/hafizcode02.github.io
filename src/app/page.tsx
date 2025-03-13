@@ -7,7 +7,7 @@ import {
   Sun,
   Github,
   Linkedin,
-  Twitter,
+  Rss,
   Mail,
   ExternalLink,
   Code,
@@ -54,44 +54,35 @@ export default function Portfolio() {
     }
   };
 
+  const menuItems = ["About", "Projects", "Skills", "Contact"];
+
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <a href="#" className="text-xl font-bold">
-            John Doe
+            |HC|
           </a>
           <div className="flex items-center gap-6">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="hidden md:block hover:text-primary transition-colors"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="hidden md:block hover:text-primary transition-colors"
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => scrollToSection("skills")}
-              className="hidden md:block hover:text-primary transition-colors"
-            >
-              Skills
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="hidden md:block hover:text-primary transition-colors"
-            >
-              Contact
-            </button>
+            <ul className="hidden md:flex gap-6">
+              {menuItems.map((item, index) => (
+                <li key={index}>
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
               aria-label="Toggle dark mode"
+              className="cursor-pointer"
             >
               {darkMode ? (
                 <Sun className="h-5 w-5" />
@@ -109,16 +100,16 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-              Hi, I'm John Doe
+              Hi, I&apos;m Hafiz Caniago
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-              Backend Developer | Cloud Enthusiast | Open Source Contributor
+              Full-Stack Developer | Cloud & AI Enthusiast
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
                 onClick={() => scrollToSection("projects")}
-                className="animate-fade-in"
+                className="animate-fade-in cursor-pointer"
                 style={{ animationDelay: "200ms" }}
               >
                 View My Work
@@ -126,7 +117,7 @@ export default function Portfolio() {
               <Button
                 size="lg"
                 variant="outline"
-                className="animate-fade-in"
+                className="animate-fade-in cursor-pointer"
                 style={{ animationDelay: "400ms" }}
               >
                 Download Resume
@@ -145,7 +136,7 @@ export default function Portfolio() {
             <div className="flex justify-center">
               <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
                 <img
-                  src="/placeholder.svg?height=256&width=256"
+                  src="/img/me.jpg"
                   alt="John Doe"
                   className="object-cover w-full h-full"
                 />
@@ -153,32 +144,33 @@ export default function Portfolio() {
             </div>
             <div>
               <p className="text-lg mb-6">
-                I'm a passionate backend developer with 5+ years of experience
-                building scalable web applications and cloud solutions. I
-                specialize in Node.js, Python, and AWS, with a strong focus on
-                microservices architecture and serverless computing.
+                I&apos;m a full-stack web developer with 3+ years of freelance
+                experience building scalable applications and cloud solutions. I
+                specialize in PHP, Laravel, Node.js, TypeScript, and PostgreSQL,
+                with a strong focus on performance and reliability.
               </p>
               <p className="text-lg mb-6">
-                When I'm not coding, you can find me contributing to open source
-                projects, writing technical articles, or exploring new
-                technologies. I believe in clean code, continuous learning, and
-                building products that make a difference.
+                Now, I&apos;m expanding my skills in React, Next.js and Nest.js to
+                strengthen my development expertise, while also exploring DevOps
+                practices to improve deployment and infrastructure management. I
+                thrive on learning new technologies, solving complex problems,
+                and building impactful solutions.
               </p>
               <div className="flex flex-wrap gap-3">
                 <div className="bg-background rounded-full px-4 py-2 text-sm font-medium shadow-sm">
-                  Node.js
+                  PHP
+                </div>
+                <div className="bg-background rounded-full px-4 py-2 text-sm font-medium shadow-sm">
+                  Typescript
                 </div>
                 <div className="bg-background rounded-full px-4 py-2 text-sm font-medium shadow-sm">
                   Python
                 </div>
                 <div className="bg-background rounded-full px-4 py-2 text-sm font-medium shadow-sm">
-                  AWS
+                  Google Cloud
                 </div>
                 <div className="bg-background rounded-full px-4 py-2 text-sm font-medium shadow-sm">
                   Docker
-                </div>
-                <div className="bg-background rounded-full px-4 py-2 text-sm font-medium shadow-sm">
-                  TypeScript
                 </div>
               </div>
             </div>
@@ -189,9 +181,10 @@ export default function Portfolio() {
       {/* Projects Section */}
       <section id="projects" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-16">
+          <h2 className="text-3xl font-bold text-center mb-4">
             Featured Projects
           </h2>
+          <p className="text-xl text-center mb-16">Discover my featured projects, completed individually and as a team.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <Card
@@ -303,20 +296,20 @@ export default function Portfolio() {
             <div>
               <h3 className="text-xl font-bold mb-4">Contact Information</h3>
               <p className="text-muted-foreground mb-6">
-                Feel free to reach out if you're looking for a developer, have a
-                question, or just want to connect.
+                Feel free to reach out if you&apos;re looking for a developer,
+                have a question, or just want to connect.
               </p>
               <div className="space-y-4">
                 <a
-                  href="mailto:hello@johndoe.dev"
+                  href="mailto:hafizcode02@gmail.com"
                   className="flex items-center gap-3 hover:text-primary transition-colors"
                 >
                   <Mail className="h-5 w-5" />
-                  <span>hello@johndoe.dev</span>
+                  <span>hafizcode02@gmail.com</span>
                 </a>
                 <div className="flex gap-4 mt-6">
                   <a
-                    href="https://github.com"
+                    href="https://github.com/hafizcode02"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-background flex items-center justify-center shadow-sm hover:text-primary transition-colors"
@@ -325,7 +318,7 @@ export default function Portfolio() {
                     <span className="sr-only">GitHub</span>
                   </a>
                   <a
-                    href="https://linkedin.com"
+                    href="https://linkedin.com/in/hafiz-caniago"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-background flex items-center justify-center shadow-sm hover:text-primary transition-colors"
@@ -334,13 +327,13 @@ export default function Portfolio() {
                     <span className="sr-only">LinkedIn</span>
                   </a>
                   <a
-                    href="https://twitter.com"
+                    href="https://medium.com/@hafizcaniago"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-background flex items-center justify-center shadow-sm hover:text-primary transition-colors"
                   >
-                    <Twitter className="h-5 w-5" />
-                    <span className="sr-only">Twitter</span>
+                    <Rss className="h-5 w-5" />
+                    <span className="sr-only">Medium</span>
                   </a>
                 </div>
               </div>
@@ -392,18 +385,20 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-muted-foreground">
-              © {new Date().getFullYear()} John Doe. All rights reserved.
+              © {new Date().getFullYear()} Hafiz Caniago. All rights reserved.
             </p>
             <div className="flex items-center gap-2 mt-4 md:mt-0">
               <span className="text-sm text-muted-foreground">Built with</span>
-              <a
-                href="https://tailwindcss.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium hover:text-primary transition-colors"
-              >
-                Tailwind CSS
-              </a>
+              <i>
+                <a
+                  href="https://nextjs.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary-dark transition-colors"
+                >
+                  Next.js
+                </a>
+              </i>
             </div>
           </div>
         </div>
@@ -415,52 +410,102 @@ export default function Portfolio() {
 // Sample data
 const projects = [
   {
-    title: "E-commerce Platform",
+    title: "SIAPPMI",
     description:
-      "A full-stack e-commerce platform with payment processing and inventory management.",
-    image: "/placeholder.svg?height=200&width=400",
-    technologies: ["Node.js", "React", "MongoDB", "Stripe"],
-    demo: true,
-  },
-  {
-    title: "Task Management API",
-    description:
-      "RESTful API for task management with authentication and role-based access control.",
-    image: "/placeholder.svg?height=200&width=400",
-    technologies: ["Express", "PostgreSQL", "JWT", "Docker"],
+      "An information system for managing and tracking overseas worker deployment, covering registration, document processing, and status monitoring.",
+    image: "./img/siappmi.png",
+    technologies: [
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "tFPDF",
+      "Bootstrap CSS",
+      "jQuery",
+    ],
     demo: false,
   },
   {
-    title: "Real-time Chat Application",
+    title: "Palomade",
     description:
-      "WebSocket-based chat application with private messaging and group channels.",
-    image: "/placeholder.svg?height=200&width=400",
-    technologies: ["Socket.io", "React", "Redis", "AWS"],
-    demo: true,
-  },
-  {
-    title: "Content Management System",
-    description:
-      "Headless CMS with a GraphQL API and customizable content types.",
-    image: "/placeholder.svg?height=200&width=400",
-    technologies: ["GraphQL", "TypeScript", "MongoDB", "Next.js"],
-    demo: true,
-  },
-  {
-    title: "DevOps Automation Tool",
-    description:
-      "CLI tool for automating deployment workflows and infrastructure provisioning.",
-    image: "/placeholder.svg?height=200&width=400",
-    technologies: ["Python", "Terraform", "AWS CDK", "GitHub Actions"],
+      "An Palm fruit sorting app that helps farmers and processors identify ripe fruit, reduce waste, and track palm oil shipments efficiently.",
+    image: "/img/palomade.png",
+    technologies: [
+      "Node.js",
+      "Express",
+      "MySQL",
+      "Sequelize",
+      "Google Maps API",
+      "Cloud Run",
+      "Python",
+      "Tensorflow",
+      "Flask",
+      "Jetpack Compose",
+      "Docker",
+    ],
     demo: false,
   },
   {
-    title: "Analytics Dashboard",
+    title: "Commodity Price Predict",
     description:
-      "Interactive dashboard for visualizing and analyzing user behavior data.",
-    image: "/placeholder.svg?height=200&width=400",
-    technologies: ["D3.js", "React", "Firebase", "Tailwind CSS"],
+      "A website dashboard serving a TensorFlow model to predict commodity prices, developed as part of my college final project.",
+    image: "./img/commodity-price-predict.png",
+    technologies: ["Python", "Flask", "Jinja2", "Tensorflow", "Bootstrap CSS"],
     demo: true,
+  },
+  {
+    title: "LPK BKJ Website",
+    description:
+      "A company profile website for a Japan job training institution.",
+    image: "./img/lpk-bkj.png",
+    technologies: ["PHP", "Laravel", "MySQL", "Bootstrap CSS", "jQuery"],
+    demo: false,
+  },
+  {
+    title: "Baznas Kuningan Website",
+    description:
+      "A web app for donations, infaq, zakat payments, and information about BAZNAS Kuningan.",
+    image: "./img/baznas-kuningan.png",
+    technologies: [
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "Bootstrap CSS",
+      "jQuery",
+      "Midtrans API",
+    ],
+    demo: false,
+  },
+  {
+    title: "SIM-SURAT",
+    description:
+      "A web-based application for managing and tracking incoming and outgoing mail, including document scanning and archiving.",
+    image: "./img/sim-surat.png",
+    technologies: ["PHP", "Laravel", "Boostrap CSS", "MySQL"],
+    demo: false,
+  },
+  {
+    title: "Kejawanan Beach Website",
+    description:
+      "An informational website about Kejawanan Beach, Cirebon, Indonesia, created for the HIMIT PENS Event 2022.",
+    image: "./img/kejawanan.png",
+    technologies: ["HTML", "CSS", "Bootstrap CSS", "JavaScript", "Figma"],
+    demo: false,
+  },
+  {
+    title: "Carougen",
+    description:
+      "A content generator tool for creating and customizing carousels for instagram and other social media platforms.",
+    image: "./img/carougen.png",
+    technologies: ["Python", "Flask", "Jinja2", "OpenAI API", "Tailwind CSS"],
+    demo: true,
+  },
+  {
+    title: "SIAKAD INVADA",
+    description:
+      "An Academic Information System for managing student data, course schedules, course enrollment, and exam results.",
+    image: "./img/siakad.png",
+    technologies: ["PHP", "Codeigniter 3", "Boostrap CSS", "MySQL"],
+    demo: false,
   },
 ];
 
@@ -469,24 +514,25 @@ import {
   Server,
   Database,
   FileJson,
-  Cpu,
   LayoutGrid,
   Palette,
-  Smartphone,
   Globe,
   Cloud,
   GitBranch,
   Terminal,
-  Shield,
 } from "lucide-react";
 
 const backendSkills = [
-  { name: "Node.js", icon: Server },
+  { name: "PHP", icon: FileJson },
   { name: "Python", icon: FileJson },
+  { name: "Node.js", icon: FileJson },
+  { name: "Typescript", icon: FileJson },
   { name: "Express", icon: Server },
-  { name: "MongoDB", icon: Database },
+  { name: "Laravel", icon: Server },
+  { name: "Flask", icon: Server },
+  { name: "Nest.js", icon: Server },
+  { name: "MySQL", icon: Database },
   { name: "PostgreSQL", icon: Database },
-  { name: "GraphQL", icon: FileJson },
 ];
 
 const frontendSkills = [
@@ -494,15 +540,13 @@ const frontendSkills = [
   { name: "TypeScript", icon: FileJson },
   { name: "Tailwind CSS", icon: Palette },
   { name: "Next.js", icon: Globe },
-  { name: "Redux", icon: Cpu },
-  { name: "React Native", icon: Smartphone },
+  { name: "Bootstrap CSS", icon: Palette },
+  { name: "jQuery", icon: FileJson },
 ];
 
 const devopsSkills = [
-  { name: "AWS", icon: Cloud },
+  { name: "Google Cloud", icon: Cloud },
   { name: "Docker", icon: Terminal },
-  { name: "Kubernetes", icon: Cloud },
   { name: "CI/CD", icon: GitBranch },
-  { name: "Terraform", icon: Shield },
   { name: "Linux", icon: Terminal },
 ];
