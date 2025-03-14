@@ -16,6 +16,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { backendSkills, devopsSkills, frontendSkills } from "@/data/skills";
+import { projects } from "@/data/projects";
+import Link from "next/link";
 
 export default function Portfolio() {
   // At the beginning of your component
@@ -150,11 +153,11 @@ export default function Portfolio() {
                 with a strong focus on performance and reliability.
               </p>
               <p className="text-lg mb-6">
-                Now, I&apos;m expanding my skills in React, Next.js and Nest.js to
-                strengthen my development expertise, while also exploring DevOps
-                practices to improve deployment and infrastructure management. I
-                thrive on learning new technologies, solving complex problems,
-                and building impactful solutions.
+                Now, I&apos;m expanding my skills in React, Next.js and Nest.js
+                to strengthen my development expertise, while also exploring
+                DevOps practices to improve deployment and infrastructure
+                management. I thrive on learning new technologies, solving
+                complex problems, and building impactful solutions.
               </p>
               <div className="flex flex-wrap gap-3">
                 <div className="bg-background rounded-full px-4 py-2 text-sm font-medium shadow-sm">
@@ -184,7 +187,9 @@ export default function Portfolio() {
           <h2 className="text-3xl font-bold text-center mb-4">
             Featured Projects
           </h2>
-          <p className="text-xl text-center mb-16">Discover my featured projects, completed individually and as a team.</p>
+          <p className="text-xl text-center mb-16">
+            Discover my featured projects, completed individually and as a team.
+          </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <Card
@@ -214,15 +219,26 @@ export default function Portfolio() {
                     ))}
                   </div>
                   <div className="flex gap-3">
-                    <Button variant="outline" size="sm" className="gap-1">
-                      <Code className="h-4 w-4" />
-                      <span>View Code</span>
-                    </Button>
+                    {project.openSource && (
+                      <Link href={project.repoUrl as string} target="_blank">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="gap-1 cursor-pointer"
+                        >
+                          <Code className="h-4 w-4" />
+                          <span>View Source</span>
+                        </Button>
+                      </Link>
+                    )}
+
                     {project.demo && (
-                      <Button size="sm" className="gap-1">
-                        <ExternalLink className="h-4 w-4" />
-                        <span>Live Demo</span>
-                      </Button>
+                      <Link href={project.demoUrl as string} target="_blank">
+                        <Button size="sm" className="gap-1 cursor-pointer">
+                          <ExternalLink className="h-4 w-4" />
+                          <span>Preview</span>
+                        </Button>
+                      </Link>
                     )}
                   </div>
                 </CardContent>
@@ -406,147 +422,3 @@ export default function Portfolio() {
     </div>
   );
 }
-
-// Sample data
-const projects = [
-  {
-    title: "SIAPPMI",
-    description:
-      "An information system for managing and tracking overseas worker deployment, covering registration, document processing, and status monitoring.",
-    image: "./img/siappmi.png",
-    technologies: [
-      "PHP",
-      "Laravel",
-      "MySQL",
-      "tFPDF",
-      "Bootstrap CSS",
-      "jQuery",
-    ],
-    demo: false,
-  },
-  {
-    title: "Palomade",
-    description:
-      "An Palm fruit sorting app that helps farmers and processors identify ripe fruit, reduce waste, and track palm oil shipments efficiently.",
-    image: "/img/palomade.png",
-    technologies: [
-      "Node.js",
-      "Express",
-      "MySQL",
-      "Sequelize",
-      "Google Maps API",
-      "Cloud Run",
-      "Python",
-      "Tensorflow",
-      "Flask",
-      "Jetpack Compose",
-      "Docker",
-    ],
-    demo: false,
-  },
-  {
-    title: "Commodity Price Predict",
-    description:
-      "A website dashboard serving a TensorFlow model to predict commodity prices, developed as part of my college final project.",
-    image: "./img/commodity-price-predict.png",
-    technologies: ["Python", "Flask", "Jinja2", "Tensorflow", "Bootstrap CSS"],
-    demo: true,
-  },
-  {
-    title: "LPK BKJ Website",
-    description:
-      "A company profile website for a Japan job training institution.",
-    image: "./img/lpk-bkj.png",
-    technologies: ["PHP", "Laravel", "MySQL", "Bootstrap CSS", "jQuery"],
-    demo: false,
-  },
-  {
-    title: "Baznas Kuningan Website",
-    description:
-      "A web app for donations, infaq, zakat payments, and information about BAZNAS Kuningan.",
-    image: "./img/baznas-kuningan.png",
-    technologies: [
-      "PHP",
-      "Laravel",
-      "MySQL",
-      "Bootstrap CSS",
-      "jQuery",
-      "Midtrans API",
-    ],
-    demo: false,
-  },
-  {
-    title: "SIM-SURAT",
-    description:
-      "A web-based application for managing and tracking incoming and outgoing mail, including document scanning and archiving.",
-    image: "./img/sim-surat.png",
-    technologies: ["PHP", "Laravel", "Boostrap CSS", "MySQL"],
-    demo: false,
-  },
-  {
-    title: "Kejawanan Beach Website",
-    description:
-      "An informational website about Kejawanan Beach, Cirebon, Indonesia, created for the HIMIT PENS Event 2022.",
-    image: "./img/kejawanan.png",
-    technologies: ["HTML", "CSS", "Bootstrap CSS", "JavaScript", "Figma"],
-    demo: false,
-  },
-  {
-    title: "Carougen",
-    description:
-      "A content generator tool for creating and customizing carousels for instagram and other social media platforms.",
-    image: "./img/carougen.png",
-    technologies: ["Python", "Flask", "Jinja2", "OpenAI API", "Tailwind CSS"],
-    demo: true,
-  },
-  {
-    title: "SIAKAD INVADA",
-    description:
-      "An Academic Information System for managing student data, course schedules, course enrollment, and exam results.",
-    image: "./img/siakad.png",
-    technologies: ["PHP", "Codeigniter 3", "Boostrap CSS", "MySQL"],
-    demo: false,
-  },
-];
-
-// Sample skills with icons
-import {
-  Server,
-  Database,
-  FileJson,
-  LayoutGrid,
-  Palette,
-  Globe,
-  Cloud,
-  GitBranch,
-  Terminal,
-} from "lucide-react";
-
-const backendSkills = [
-  { name: "PHP", icon: FileJson },
-  { name: "Python", icon: FileJson },
-  { name: "Node.js", icon: FileJson },
-  { name: "Typescript", icon: FileJson },
-  { name: "Express", icon: Server },
-  { name: "Laravel", icon: Server },
-  { name: "Flask", icon: Server },
-  { name: "Nest.js", icon: Server },
-  { name: "MySQL", icon: Database },
-  { name: "PostgreSQL", icon: Database },
-];
-
-const frontendSkills = [
-  { name: "React", icon: LayoutGrid },
-  { name: "TypeScript", icon: FileJson },
-  { name: "Tailwind CSS", icon: Palette },
-  { name: "Next.js", icon: Globe },
-  { name: "Bootstrap CSS", icon: Palette },
-  { name: "jQuery", icon: FileJson },
-];
-
-const devopsSkills = [
-  { name: "Google Cloud", icon: Cloud },
-  { name: "Docker", icon: Terminal },
-  { name: "CI/CD", icon: GitBranch },
-  { name: "Linux", icon: Terminal },
-];
