@@ -401,7 +401,8 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-muted-foreground">
-              © {new Date().getFullYear()} Hafiz Caniago. All rights reserved.
+              {/* © {new Date().getFullYear()} Hafiz Caniago. All rights reserved. */}
+              © 2025 Hafiz Caniago. All rights reserved.
             </p>
             <div className="flex items-center gap-2 mt-4 md:mt-0">
               <span className="text-sm text-muted-foreground">Built with</span>
