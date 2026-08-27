@@ -53,11 +53,30 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        neo: {
+          yellow: "var(--neo-yellow)",
+          pink: "var(--neo-pink)",
+          cyan: "var(--neo-cyan)",
+          lime: "var(--neo-lime)",
+          orange: "var(--neo-orange)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        brutal: "var(--shadow-brutal)",
+        "brutal-sm": "var(--shadow-brutal-sm)",
+      },
+      borderWidth: {
+        "3": "3px",
+      },
+      fontFamily: {
+        display: "var(--font-display)",
+        mono: "var(--font-mono)",
+        sans: "var(--font-inter)",
       },
       keyframes: {
         "accordion-down": {
